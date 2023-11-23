@@ -4,13 +4,22 @@ import { describe } from "vitest";
 import userEvent from "@testing-library/user-event";
 
 describe("MainNav", () => {
+  const renderMainNav = () => {
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true,
+        },
+      },
+    });
+  };
   it("displays company name", () => {
-    render(MainNav);
+    renderMainNav();
     const companyName = screen.getByText("Cado Careers");
     expect(companyName).toBeInTheDocument();
   });
   it("displays menu items for nav", () => {
-    render(MainNav);
+    renderMainNav();
     const navItems = screen.getAllByRole("listitem");
     const navTexts = navItems.map((item) => item.textContent);
     expect(navTexts).toEqual([
@@ -25,7 +34,7 @@ describe("MainNav", () => {
 
   describe("when user logs in", () => {
     it("displays profile pic", async () => {
-      render(MainNav);
+      renderMainNav();
       let profileImage = screen.queryByRole("img", {
         name: /profile image/i,
       });

@@ -1,9 +1,10 @@
 <script>
 import ActionButton from "@/components/ActionButton.vue";
 import ProfileImage from "./ProfileImage.vue";
+import SubNav from "@/components/SubNav.vue";
 export default {
   name: "MainNav",
-  components: { ActionButton, ProfileImage, ProfileImage },
+  components: { ActionButton, ProfileImage, ProfileImage, SubNav },
   data() {
     return {
       company: "Cado Careers",
@@ -54,6 +55,7 @@ export default {
           <ActionButton v-else v-on:click="loginUser" text="Sign In" />
         </div>
       </div>
+      <SubNav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
