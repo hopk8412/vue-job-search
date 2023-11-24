@@ -1,3 +1,11 @@
+const interval = setInterval(() => {
+  console.log("Hello!");
+}, 2000);
+
+setTimeout(() => {
+  clearInterval(interval);
+}, 6000);
+
 // const favoriteFood = "sushi";
 
 // const goodFoods = {
